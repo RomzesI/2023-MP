@@ -63,7 +63,7 @@ birth_month = 6
 r = birth_day / birth_month
 
 points = []
-for i in range(500):
+for i in range(42000):
     real = random.uniform(-r, r)
     imag = random.uniform(-r, r)
     point = complex(real, imag)
