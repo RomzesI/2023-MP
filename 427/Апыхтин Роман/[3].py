@@ -105,14 +105,19 @@ else:
 
 #сохранение лабиринта с указанием пути к ключу и выхода из него
 maze_with_path = maze.copy()
-maze_with_path[key_x][key_y] = '*'
+maze_with_path[key_x][key_y] = 'K'  # обозначение точки ключа
+maze_with_path[start_x][start_y] = 'A'
+
 
 if path_to_key and path_to_exit:
     for x, y in path_to_key:
         maze_with_path[x][y] = '.'
     for x, y in path_to_exit:
         maze_with_path[x][y] = ','
-    maze_with_path[len(maze) - 1][len(maze[0]) - 2] = 'E'#обозначение выхода
+    maze_with_path[key_x][key_y] = '*'  # замена 'K' на '*'
+
+maze_with_path[len(maze) - 1][len(maze[0]) - 2] = 'E'  # обозначение выхода
+maze_with_path[start_x][start_y] = 'A'  # обозначение стартовой позиции
 
 #запись результата в файл
 with codecs.open('maze-for-me-done.txt', 'w', 'utf_8_sig') as f:
@@ -120,3 +125,6 @@ with codecs.open('maze-for-me-done.txt', 'w', 'utf_8_sig') as f:
         f.write(''.join(line) + '\n')
 
 
+# with codecs.open('maze-for-me-done.txt', 'r', 'utf_8_sig') as f:
+#     file_contents = f.read()
+# print(file_contents)
